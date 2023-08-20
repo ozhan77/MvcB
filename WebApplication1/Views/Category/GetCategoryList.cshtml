@@ -1,0 +1,36 @@
+﻿@using ClassLibrary1.Concrete
+@model List<Category>
+@{
+    Layout = null;
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetCategoryList</title>
+</head>
+<body>
+    <div> 
+        <table class="table table-active">
+            <tr>
+                <thead>ID</thead>
+                <thead>Ad</thead>
+                <thead>Açıklama</thead>
+                <thead>Durum</thead>
+            </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CategoryID</td>
+                <td>@item.CategoryName</td>
+                <td>@item.CategoryDescription</td>
+                <td>@item.CategoryStatus</td>
+            </tr>
+        }
+        </table>
+    </div>
+
+</body>
+</html>
