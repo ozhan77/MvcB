@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using ClassLibrary1.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,17 @@ namespace WebApplication1.Controllers
         {
             var categoryValues = cm.GetAllBl();
             return View(categoryValues);
+        }
+        [HttpGet]
+        public ActionResult AddCategory()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddCategory(Category p) 
+        {
+            cm.CategoryAddBl(p);
+            return RedirectToAction("GetCategoryList");
         }
     }
 }
