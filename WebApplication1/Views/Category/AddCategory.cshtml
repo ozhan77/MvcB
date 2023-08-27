@@ -1,23 +1,22 @@
-﻿
+﻿@model ClassLibrary1.Concrete.Category
+
 @{
     Layout = null;
 }
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>AddCategory</title>
-</head>
-<body>
-    <div> 
-        <h1>Kategori Ekleme</h1>
-        <form class="form-group" method="post">
-            <input type="text" placeholder="Kategori adı" name="CategoryName" class="form-control"/>
-            <input type="text" placeholder="Kategori Açıklaması" name="CategoryDescription" class="form-control"/>
-            <button class="btn btn-danger">Ekle</button>
-        </form>
+<h1>New Category</h1>
+<br />
+
+@using (Html.BeginForm("AddCategory", "Category", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Category Name")
+        @Html.TextBoxFor(x => x.CategoryName)
+        <br /><br />
+        @Html.Label("Category Name")
+        @Html.TextBoxFor(x => x.CategoryDescription)
+        <br /><br />
+        <button>Save</button>
     </div>
-</body>
-</html>
+}

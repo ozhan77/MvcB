@@ -1,15 +1,15 @@
 ﻿using ClassLibrary1.Concrete;
+using DataAccessLayer.Concreate.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Abstract
+namespace DataAccessLayer.EntityFramework
 {
-    public interface ICategoryService
+    public class EFCategoryDal:GenericRepository<Category>,ICategoryDal
     {
-        List<Category> GetList();
-        void CategoryAdd(Category category);
+
     }
 }
