@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using ClassLibrary1.Concrete;
 using DataAccessLayer.EntityFramework;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,8 +32,21 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult AddCategory(Category p) 
         {
-            //cm.CategoryAddBl(p);
-            return RedirectToAction("GetCategoryList");
+            CategoryValidator categoryValidator = new CategoryValidator();
+            ValidationResult validationResult = categoryValidator.Validate(p); 
+            if (validationResult.IsValid) 
+            {
+                cm.CategoryAdd(p);
+                return RedirectToAction("GetCategoryList");
+            }
+            else
+            {
+                foreach (var item in validationResult.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName,item.ErrorMessage);
+                }
+            }
+            return View();
         }
     }
 }

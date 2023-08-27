@@ -14,6 +14,7 @@ namespace BusinessLayer.ValidationRules
         {
             RuleFor(x => x.CategoryName).NotEmpty().WithMessage("Kategori Adı boş olamaz");
             RuleFor(x => x.CategoryName).MinimumLength(3).WithMessage("Kategori Adı boş olamaz");
+            RuleFor(x => x.CategoryDescription).MinimumLength(3).WithMessage("Kategori açıklamasınada birşeyler yaz boş olamaz");
         }
     }
 }
