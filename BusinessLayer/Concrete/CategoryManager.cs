@@ -5,6 +5,7 @@ using DataAccessLayer.Concreate.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,6 +26,16 @@ namespace BusinessLayer.Concrete
         public void CategoryAdd(Category category)
         {
             _categorydal.Insert(category);
+        }
+
+        public void CategoryDelete(Category category)
+        {
+            _categorydal.Delete(category);
+        }
+
+        public Category GetById(int id)
+        {
+            return _categorydal.Get(x => x.CategoryID == id);
         }
 
         public List<Category> GetList()

@@ -44,5 +44,12 @@ namespace WebApplication1.Controllers
             }
             return View();
         }
+        public ActionResult DeleteCategory(int id)
+        {
+            var categoryvalues = cm.GetById(id);
+            cm.CategoryDelete(categoryvalues);
+            return RedirectToAction("Index");
+
+        }
     }
 }
