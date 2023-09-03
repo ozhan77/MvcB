@@ -51,5 +51,18 @@ namespace WebApplication1.Controllers
             return RedirectToAction("Index");
 
         }
+        [HttpGet]
+        public ActionResult EditCategory(int id)
+        {
+            var categories = cm.GetById(id);
+            cm.CategoryUpdate(categories);
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult EditCategory(Category p)
+        {
+            cm.CategoryUpdate(p);
+            return RedirectToAction("Index");
+        }
     }
 }
