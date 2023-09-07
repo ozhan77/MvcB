@@ -6,24 +6,24 @@
     Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
 
-        <table class="table">
-            <tr>
-            <thead>ID</thead>
-            <thead>Ad</thead>
-            <thead>Açıklama</thead>
-            <thead>Durum</thead>
-            </tr>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.CategoryID</td>
-                    <td>@item.CategoryName</td>
-                    <td>@item.CategoryDescription</td>
-                    <td>@item.CategoryStatus</td>
-                    <td><a href="/AdminCategory/DeleteCategory/@item.CategoryID" class="btn btn-danger" >Delete</a></td>
-                    <td><a href="" class="btn btn-warning" >Update</a></td>
-                    <td><a href="/AdminCategory/EditCategory/@item.CategoryID" class="btn btn-primary" ></a></td>
-                </tr>
-            }
-        </table>
+<table class="table">
+    <tr>
+        <thead>ID</thead>
+        <thead>Ad</thead>
+        <thead>Açıklama</thead>
+        <thead>Durum</thead>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryID</td>
+            <td>@item.CategoryName</td>
+            <td>@item.CategoryDescription</td>
+            <td>@item.CategoryStatus</td>
+            <td><a href="/AdminCategory/DeleteCategory/@item.CategoryID" class="btn btn-danger">Delete</a></td>
+            <td><a href="/AdminCategory/EditCategory/@item.CategoryID" class="btn btn-warning">Update</a></td>
+            <td><a href="" class="btn btn-primary">Title</a></td>
+        </tr>
+    }
+</table>
         <a href="/AdminCategory/AddCategory" class="btn btn-danger">Yeni Kategori Ekle</a>

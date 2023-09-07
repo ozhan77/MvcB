@@ -16,8 +16,6 @@ namespace DataAccessLayer.Concreate.Repositories
         DbSet<Category> _object;
         public void Delete(Category item)
         {
-            var deletedEntity = c.Entry(item);
-            deletedEntity.State = EntityState.Deleted;
             _object.Remove(item);
             c.SaveChanges();
         }
@@ -29,9 +27,6 @@ namespace DataAccessLayer.Concreate.Repositories
 
         public void Insert(Category item)
         {
-            var adddEntity = c.Entry(item);
-            adddEntity.State = EntityState.Added;
-            //_object.Remove(item);
             c.SaveChanges();
         }
 
@@ -47,8 +42,6 @@ namespace DataAccessLayer.Concreate.Repositories
 
         public void Update(Category item)
         {
-            var updatedEntity = c.Entry(item);
-            updatedEntity.State = EntityState.Modified;
             c.SaveChanges();
         }
     }

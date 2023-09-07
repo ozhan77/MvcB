@@ -1,0 +1,28 @@
+﻿@using ClassLibrary1.Concrete
+@model List<Writer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Writer Name</th>
+        <th>Writer Surname</th>
+        <th>Mail</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.WriterID</td>
+            <td>@item.WriterName</td>
+            <td>@item.WriterSurname</td>
+            <td>@item.WriterMail</td>
+        </tr>
+
+    }
+</table>
