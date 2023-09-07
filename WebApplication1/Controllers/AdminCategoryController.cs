@@ -55,8 +55,7 @@ namespace WebApplication1.Controllers
         public ActionResult EditCategory(int id)
         {
             var categories = cm.GetById(id);
-            cm.CategoryUpdate(categories);
-            return RedirectToAction("Index");
+            return View(categories);
         }
         [HttpPost]
         public ActionResult EditCategory(Category p)
