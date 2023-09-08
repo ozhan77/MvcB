@@ -15,7 +15,7 @@ namespace WebApplication1.Controllers
         public ActionResult Index()
         {
             var writerValues = wm.GetList();
-            return View();
+            return View(writerValues);
         }
     }
 }
