@@ -15,20 +15,20 @@ namespace WebApplication1.Controllers
     {
         // GET: Writer
         WriterManager wm=new WriterManager(new EFWriterDal());
+        WriterValidator validationRules = new WriterValidator();
         public ActionResult Index()
         {
             var writerValues = wm.GetList();
             return View(writerValues);
         }
         [HttpGet]
-        public ActionResult AddWriter(Writer writer)
+        public ActionResult AddWriter()
         {
             return View();
         }
         [HttpPost]
         public ActionResult AddWriter(Writer writer)
         {
-            WriterValidator validationRules = new WriterValidator();
             ValidationResult results = validationRules.Validate(writer);
             if (results.IsValid)
             {
@@ -43,6 +43,31 @@ namespace WebApplication1.Controllers
                 }
             }
             return View();
+        }
+        [HttpGet]
+        public ActionResult EditWriter(int id)
+        {
+            var writerValue = wm.GetById(id);
+            return View(writerValue);
+        }
+        [HttpPost]
+        public ActionResult EditWriter(Writer writer)
+        {
+            ValidationResult results = validationRules.Validate(writer);
+            if (results.IsValid)
+            {
+                wm.WriterAdd(writer);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            wm.WriterUpdate(writer);
+            return RedirectToAction("Index");
         }
     }
 }
