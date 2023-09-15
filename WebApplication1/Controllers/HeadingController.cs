@@ -14,6 +14,7 @@ namespace WebApplication1.Controllers
         // GET: Heading
         HeadingManager hm=new HeadingManager(new EFHeadingDal());
         CategoryManager cm=new CategoryManager(new EFCategoryDal());
+        WriterManager wm = new WriterManager(new EFWriterDal());
         public ActionResult Index()
         {
             var headingvalues = hm.GetList();
@@ -28,7 +29,14 @@ namespace WebApplication1.Controllers
                                                       Text = x.CategoryName,
                                                       Value = x.CategoryID.ToString()
                                                   }).ToList();
+            List<SelectListItem> valuewriter = (from x in wm.GetList()
+                                                select new SelectListItem
+                                                {
+                                                    Text = x.WriterName+" "+x.WriterSurname,
+                                                    Value = x.WriterID.ToString()
+                                                }).ToList();
             ViewBag.vlc = valuecategory;
+            ViewBag.vlw = valuewriter;
             return View();
         }
         [HttpPost]
