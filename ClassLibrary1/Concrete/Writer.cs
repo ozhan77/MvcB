@@ -17,7 +17,7 @@ namespace ClassLibrary1.Concrete
         public string WriterSurname { get; set; }
         [StringLength(50)]
         public string WriterImage { get; set; }
-        [StringLength(50)]
+        [StringLength(250)]
         public string WriterMail { get; set; }
 
         public string WriterAbout { get; set; }
