@@ -1,0 +1,19 @@
+﻿using ClassLibrary1.Concrete;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BusinessLayer.Abstract
+{
+    public interface IContentservice
+    {
+        List<Content> GetList();
+        List<Content> GetListByID(int id);
+        void ContentAdd(Content content);
+        Content GetById(int id);
+        void ContentDelete(Content content);
+        void ContentUpdate(Content content);
+    }
+}
