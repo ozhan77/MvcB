@@ -46,9 +46,18 @@ namespace WebApplication1.Controllers
             hm.HeadingAdd(p);
             return RedirectToAction("Index");
         }
-        public ActionResult ContentByHeading()
+        [HttpGet]
+        public ActionResult EditHeading(int id)
         {
-            return View();
+            List<SelectListItem> valuecategory = (from x in cm.GetList()
+                                                  select new SelectListItem
+                                                  {
+                                                      Text = x.CategoryName,
+                                                      Value = x.CategoryID.ToString()
+                                                  }).ToList();
+            ViewBag.vlc = valuecategory;
+            var HeadingValue = hm.GetById(id);
+            return View(HeadingValue);
         }
     }
 }
